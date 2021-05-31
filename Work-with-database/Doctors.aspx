@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="Врачи" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Doctors.aspx.cs" Inherits="Work_with_database.Doctors" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-  <h2><%: Title %></h2>
   <div class="page">
-    <div class="leftPanel">
+    <div class="leftPanel container">
+      <h2><%: Title %></h2>
       <div class="leftPanelFilter">
         <select class="form-select" aria-label="Выбрать специальзацию врача">
           <option selected>Выбрать специальзацию врача</option>
@@ -133,82 +133,69 @@
       <a href="./Settings" class="leftPanelButton">Добавить нового врача</a>
     </div>
 
-    <%--<div class="Workspace_content">
-      <div class="Workspace_contentSetting">
-        <h2 class="Workspace_contentHeader">Станок #<span id="machineId" runat="server"></span></h2>
-        <div class="row">
-          <div class="col Workspace_contentSpkText">Номер СПК</div>
+    <div class="rightPanel container">
+      <h2 class="mb-5">Информация о враче</h2>
+      <div class="row mb-5">
+        <div class="col-4">
+          <img src="~/Photo/NoPhoto.png" runat="server" class="float-end img-thumbnail" alt="no photo">
         </div>
-        <div class="row Workspace_spk">
-          <div class="col">
-            <input type="number" class="Workspace_contentSpkInput" id="machineSPK" runat="server" />
-            <asp:Button type="button" class="btn btn-primary btn-sm Workspace_contentSpkButton" runat="server" OnClick="saveSpkNumber" Text="Сохранить" />
+        <div class="col">
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Имя" aria-label="Имя">
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <input class="Workspace_progressBar" type="range" min="0" max="100" step="1" value="0" runat="server" id="machineValue" />
-            <asp:Button type="button" class="btn btn-primary btn-sm Workspace_contentSpkButton" runat="server" OnClick="saveValue" Text="Сохранить" />
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Фамилия" aria-label="Фамилия">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Отчество" aria-label="Отчество">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Год рождения" aria-label="Год рождения">
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" placeholder="Телефон" aria-label="Телефон">
+            </div>
           </div>
         </div>
       </div>
-      <div class="Workspace_filter">
-        <div class="Workspace_filterHeader">Выбрать период:</div>
-        <div class="row">
-          <div class="col">
-            <div class="Workspace_filterText">От: </div>
-            <div class="form-group">
-              <input type="date" class="form-control">
-            </div>
-            <div class="Workspace_filterChange">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1" selected>Первая смена</option>
-                <option value="2">Вторая смена</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="Workspace_filterText">До: </div>
-            <div class="form-group">
-              <input type="date" class="form-control">
-            </div>
-            <div class="Workspace_filterChange">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1" selected>Первая смена</option>
-                <option value="2">Вторая смена</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary">Вывести данные</button>
+
+      <div class="row mb-3">
+        <div class="col">
+          <h4>Образование</h4>
         </div>
       </div>
-      <div class="Workspace_contentData">
-        <div class="Workspace_contentDataBlock">
-          <div class="Workspace_contentDataHeader">
-            Время работы станка 
-            <div class="Workspace_contentDataSubHeader">За период без простоя</div>
-          </div>
-          <div class="">8 дней 16 часов</div>
+
+      <div class="row mb-5">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Университет" aria-label="Университет">
         </div>
-        <div class="Workspace_contentDataBlock">
-          <div class="Workspace_contentDataHeader">Наработка инструмента</div>
-          <div class="">52</div>
-        </div>
-        <div class="Workspace_contentDataBlock">
-          <div class="Workspace_contentDataHeader">Кол-во деталей</div>
-          <div class="">18</div>
-        </div>
-        <div class="Workspace_contentDataBlock">
-          <div class="Workspace_contentDataHeader">Время возмущения</div>
-          <div class="">Скачать файл</div>
-        </div>
-        <div class="Workspace_contentDataBlock">
-          <div class="Workspace_contentDataHeader">Коэффициент загрузки</div>
-          <div class="">9 дней 2 часа</div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Опыт (полных лет)" aria-label="Опыт (полных лет)">
         </div>
       </div>
-    </div>--%>
+
+      <div class="row mb-3">
+        <div class="col">
+          <h4>Рабочие данные</h4>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Специализация" aria-label="Специализация">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Кабинет" aria-label="Кабинет">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary">Сохранить изменения</button>
+    </div>
   </div>
 </asp:Content>

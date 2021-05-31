@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Photo\NoPhoto.png" />
     <Content Include="Schedule.aspx" />
     <Content Include="Patients.aspx" />
     <Content Include="Doctors.aspx" />

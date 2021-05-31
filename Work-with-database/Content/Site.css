@@ -1,17 +1,20 @@
 ﻿.body-content {
-  padding-top: 40px;
-  padding-bottom: 20px;
-  box-sizing: border-box;
+  margin-top: 80px;
+  margin-bottom: 20px;
 }
 
 .page {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
 }
 
 .leftPanel {
   width: 33%;
+}
+
+.leftPanelFilter {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .leftPanelElements {
@@ -54,4 +57,8 @@
   cursor: pointer;
   color: black;
   text-decoration: none;
+}
+
+.rightPanel {
+  width: 66%;
 }
