@@ -11,7 +11,7 @@ namespace Work_with_database
 {
 
 
-  public partial class _Default
+  public partial class Doctors
   {
   }
 }

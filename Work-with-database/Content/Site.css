@@ -4,28 +4,54 @@ body {
     padding-bottom: 20px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+.leftPanel {
+  width: 33%;
 }
 
+.leftPanelElements {
+  overflow-y: scroll;
+  max-height: 700px;
+  padding-right: 10px;
+}
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .jumbotron {
-        margin-top: 20px;
-    }
+.leftPanelElementBlock {
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px 20px 15px;
+  margin: 20px 0;
+}
 
-    .body-content {
-        padding: 0;
-    }
+.leftPanelElementBlock:hover{
+  box-shadow: 0 16px 32px rgba(44,62,80,.2);
+  cursor: pointer;
+}
+
+.leftPanelElementDataRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftPanelButton {
+  display: block;
+  color: black;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+
+.leftPanelButton:hover {
+  box-shadow: 0 16px 32px rgba(44,62,80,.2);
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
