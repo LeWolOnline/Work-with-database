@@ -178,7 +178,7 @@
           <input type="text" class="form-control" placeholder="Телефон" aria-label="Телефон">
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-4">
           <input type="text" class="form-control" placeholder="Район города" aria-label="Район города">
         </div>
@@ -195,7 +195,7 @@
           </div>
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col">
           <input type="text" class="form-control" placeholder="Отдел, в котором работает" aria-label="Отдел, в котором работает">
         </div>

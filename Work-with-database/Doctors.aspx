@@ -135,7 +135,7 @@
 
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о враче</h2>
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col-4">
           <img src="~/Photo/NoPhoto.png" runat="server" class="float-end img-thumbnail" alt="no photo">
         </div>
@@ -172,7 +172,7 @@
         </div>
       </div>
 
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col">
           <input type="text" class="form-control" placeholder="Университет" aria-label="Университет">
         </div>
@@ -187,7 +187,7 @@
         </div>
       </div>
 
-      <div class="row mb-5">
+      <div class="row mb-4">
         <div class="col">
           <input type="text" class="form-control" placeholder="Специализация" aria-label="Специализация">
         </div>
