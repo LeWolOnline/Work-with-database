@@ -5,8 +5,8 @@
     <div class="leftPanel container">
       <h2><%: Title %></h2>
       <div class="leftPanelFilter">
-        <select class="form-select" aria-label="Выбрать специальзацию врача">
-          <option selected>Выбрать специальзацию врача</option>
+        <select class="form-select" aria-label="Выбрать специализацию врача">
+          <option selected>Выбрать специализацию врача</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
