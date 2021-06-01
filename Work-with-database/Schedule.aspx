@@ -142,6 +142,16 @@
 
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о записи</h2>
+      
+      <div class="row mb-4">
+        <div class="col">
+          <label class="form-label">Дата и время записи</label>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <h4>Информация о пациенте</h4>
+      </div>
       <div class="row mb-3">
         <div class="col">
           <label class="form-label">ФИО пациента</label>
@@ -152,22 +162,56 @@
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Номер страхового полиса" aria-label="Номер страхового полиса">
+          <label class="form-label">Номер страхового полиса</label>
         </div>
         <div class="col-4">
           <label class="form-label">Телефон пациента</label>
         </div>
       </div>
-
       <div class="row mb-3">
         <div class="col">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Работник предприятия</label>
-          </div>
+          <label class="form-label">Адрес пациента</label>
+        </div>
+        <div class="col-4">
+          <label class="form-label">Район города</label>
         </div>
       </div>
-      <button type="button" class="btn btn-primary">Сохранить изменения</button>
+      <div class="row mb-4">
+        <div class="col">
+          <button type="button" class="btn btn-primary">Распечатать карточку пациента</button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <h4>Информация о враче</h4>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <label class="form-label">Имя врача, к кому запись</label>
+        </div>
+        <div class="col-4">
+          <label class="form-label">Номер кабинета</label>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <h4>Информация об оплате</h4>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Работник предприятия?</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Сумма к оплате</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <button type="button" class="btn btn-primary">Распечатать платежный документ</button>
+        </div>
+      </div>
     </div>
   </div>
 </asp:Content>

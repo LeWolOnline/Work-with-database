@@ -36,6 +36,14 @@
   cursor: pointer;
 }
 
+.leftPanelElementBlock:first-child {
+  margin-top: 0;
+}
+
+.leftPanelElementBlock:last-child {
+  margin-bottom: 0;
+}
+
 .leftPanelElementDataRow {
   display: flex;
   justify-content: space-between;

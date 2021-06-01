@@ -32,8 +32,15 @@
         <div class="col-12 mb-5">
           <label for="inputTime" class="form-label">Выберите доступное время</label>
           <select id="inputTime" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
+            <option selected>Выберите...</option>
+            <option value="9:00">9:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
           </select>
         </div>
         <div class="col-12">
