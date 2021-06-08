@@ -3,13 +3,16 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="page">
     <div class="leftPanel container">
+
       <h2><%: Title %></h2>
       <div class="leftPanelFilter">
-        <select class="form-select" aria-label="Выбрать специализацию врача">
-          <option selected>Выбрать специализацию врача</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select id="DocType" class="form-select" aria-label="Выбрать специализацию врача">
+          <option value="" selected>Выбрать специализацию врача</option>
+          <asp:Repeater ID="typesRepeater" runat="server">
+            <ItemTemplate>
+              <option value="<%# DataBinder.Eval(Container.DataItem, "DocType")%>"><%# DataBinder.Eval(Container.DataItem, "DocType")%></option>
+            </ItemTemplate>
+          </asp:Repeater>
         </select>
       </div>
       <div class="leftPanelElements">
@@ -19,116 +22,20 @@
           <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getMachineInfo" />
         </div>--%>
 
-        <%--<asp:Repeater ID="machineRepeater" runat="server">
+        <asp:Repeater ID="elementsRepeater" runat="server">
           <ItemTemplate>
-            <div class="Workspace_machineBlock" id="machine<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %>">
-              <input data-machine-id="<%# DataBinder.Eval(Container.DataItem, "MachineId") %>"
-                id="hiMachine<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %>"
-                type="hidden" />
-              <div class="Workspace_machineRow">
-                <div class="Workspace_machineID">Станок #<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %></div>
-                <div class="Workspace_machineInventoryNumber">ID: <%# DataBinder.Eval(Container.DataItem, "MachineInventoryNumber") %></div>
+            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Id")%>">
+              <div class="leftPanelElementDataRow">
+                <div class="Doctors_DocFio"><%# DataBinder.Eval(Container.DataItem, "Fio")%></div>
+                <div class="Doctors_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Cabinet")%> каб.</div>
               </div>
-
-              <div class="Workspace_machineValue">
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%# DataBinder.Eval(Container.DataItem, "MachineValue") %>%" aria-valuenow="<%# DataBinder.Eval(Container.DataItem, "MachineValue") %>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Doctors_DocFio"><%# DataBinder.Eval(Container.DataItem, "DocType")%></div>
               </div>
             </div>
           </ItemTemplate>
-        </asp:Repeater>--%>
+        </asp:Repeater>   
 
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
-        <div class="leftPanelElementBlock">
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Артуров Артур Артурович</div>
-            <div class="Doctors_DocCabinet">708 каб.</div>
-          </div>
-          <div class="leftPanelElementDataRow">
-            <div class="Doctors_DocFio">Терапевт</div>
-          </div>
-        </div>
       </div>
       <a href="./Settings" class="leftPanelButton">Добавить нового врача</a>
     </div>
