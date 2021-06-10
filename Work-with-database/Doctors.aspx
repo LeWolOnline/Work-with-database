@@ -30,7 +30,7 @@
                 <div class="Doctors_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Cabinet")%> каб.</div>
               </div>
               <div class="leftPanelElementDataRow">
-                <div class="Doctors_DocFio"><%# DataBinder.Eval(Container.DataItem, "DocType")%></div>
+                <div class="Doctors_DocType"><%# DataBinder.Eval(Container.DataItem, "DocType")%></div>
               </div>
             </div>
           </ItemTemplate>

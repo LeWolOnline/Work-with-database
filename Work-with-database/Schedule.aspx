@@ -15,26 +15,29 @@
         <div style="display: none;">
           <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getMachineInfo" />
         </div>--%>
-
-        <%--<asp:Repeater ID="machineRepeater" runat="server">
+        
+        <asp:Repeater ID="elementsRepeater" runat="server">
           <ItemTemplate>
-            <div class="Workspace_machineBlock" id="machine<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %>">
-              <input data-machine-id="<%# DataBinder.Eval(Container.DataItem, "MachineId") %>"
-                id="hiMachine<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %>"
-                type="hidden" />
-              <div class="Workspace_machineRow">
-                <div class="Workspace_machineID">Станок #<%# DataBinder.Eval(Container.DataItem, "MachineIdNumber") %></div>
-                <div class="Workspace_machineInventoryNumber">ID: <%# DataBinder.Eval(Container.DataItem, "MachineInventoryNumber") %></div>
+            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Id")%>">
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_DocFio">Врач: </div>
+                <div class="Sсhedule_DocCabinet">Кабинет: <%# DataBinder.Eval(Container.DataItem, "DocCabinet")%></div>
               </div>
-
-              <div class="Workspace_machineValue">
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%# DataBinder.Eval(Container.DataItem, "MachineValue") %>%" aria-valuenow="<%# DataBinder.Eval(Container.DataItem, "MachineValue") %>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_DocFio"><%# DataBinder.Eval(Container.DataItem, "DocFio")%></div>
+              </div>
+              <div class="leftPanelElementDataRowLine">
+              </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_PatientFio">Пациент:</div>
+                <div class="Sсhedule_PatientAge">Возраст: <%# DataBinder.Eval(Container.DataItem, "PatientAge")%></div>
+              </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_PatientFio"><%# DataBinder.Eval(Container.DataItem, "PatientFio")%></div>
               </div>
             </div>
           </ItemTemplate>
-        </asp:Repeater>--%>
+        </asp:Repeater>  
 
         <div class="leftPanelElementBlock">
           <div class="leftPanelElementDataRow">

@@ -13,5 +13,23 @@ namespace Work_with_database
 
   public partial class Patients
   {
+
+    /// <summary>
+    /// districtsRepeater элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater districtsRepeater;
+
+    /// <summary>
+    /// elementsRepeater элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater elementsRepeater;
   }
 }

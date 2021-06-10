@@ -23,7 +23,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection("Server=localhost;User ID=LeWol;Password=2000;Database=hospital"))
+      using (var connection = new MySqlConnection("Server=localhost;User ID=root;Password=2000;Database=hospital")) //LeWol/root
       {
         string query = "SELECT doctors.LastName, doctors.FirstName, doctors.Patronymic, rooms.Room, types.Type, doctors.DoctorID " +
           "FROM hospital.doctors, hospital.rooms, hospital.types " +
@@ -47,7 +47,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection("Server=localhost;User ID=LeWol;Password=2000;Database=hospital"))
+      using (var connection = new MySqlConnection("Server=localhost;User ID=root;Password=2000;Database=hospital")) //LeWol/root
       {
         string query = "SELECT DISTINCT types.Type FROM hospital.types;";
         connection.Open();
