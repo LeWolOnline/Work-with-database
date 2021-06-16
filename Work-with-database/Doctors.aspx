@@ -6,8 +6,13 @@
 
       <h2><%: Title %></h2>
       <div class="leftPanelFilter">
-        <select id="DocType" class="form-select" aria-label="Выбрать специализацию врача">
-          <option value="" selected>Выбрать специализацию врача</option>
+        <input type="hidden" id="hiSelect" runat="server" clientidmode="static" />
+        <div style="display: none;">
+          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBackSelect" OnClick="selectUpdate" />
+        </div>
+        <select id="selector" class="form-select" aria-label="Выбрать специализацию врача">
+          <option selected>Выбрать специализацию врача</option>
+          <option value="">Все</option>
           <asp:Repeater ID="typesRepeater" runat="server">
             <ItemTemplate>
               <option value="<%# DataBinder.Eval(Container.DataItem, "DocType")%>"><%# DataBinder.Eval(Container.DataItem, "DocType")%></option>
@@ -17,10 +22,9 @@
       </div>
       <div class="leftPanelElements">
 
-        <%--<input type="hidden" id="hiMachineId" runat="server" clientidmode="static" />
         <div style="display: none;">
-          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getMachineInfo" />
-        </div>--%>
+          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
+        </div>
 
         <asp:Repeater ID="elementsRepeater" runat="server">
           <ItemTemplate>
@@ -34,14 +38,15 @@
               </div>
             </div>
           </ItemTemplate>
-        </asp:Repeater>   
+        </asp:Repeater>
 
       </div>
-      <a href="./Settings" class="leftPanelButton">Добавить нового врача</a>
+      <ASP:Button runat="server" class="leftPanelButton" Text="Добавить нового врача" OnClick="addNewElement"></ASP:Button>
     </div>
 
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о враче</h2>
+      <input type="hidden" id="hiElementId" runat="server" clientidmode="static" />
       <div class="row mb-4">
         <div class="col-4">
           <img src="~/Photo/NoPhoto.png" runat="server" class="float-end img-thumbnail" alt="no photo">
@@ -49,25 +54,25 @@
         <div class="col">
           <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Имя" aria-label="Имя">
+              <input type="text" runat="server" class="form-control" placeholder="Имя" aria-label="Имя" id="docLastName">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Фамилия" aria-label="Фамилия">
+              <input type="text" runat="server" class="form-control" placeholder="Фамилия" aria-label="Фамилия" id="docFirstName">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Отчество" aria-label="Отчество">
+              <input type="text" runat="server" class="form-control" placeholder="Отчество" aria-label="Отчество" id="docPatronymic">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Год рождения" aria-label="Год рождения">
+              <input type="text" runat="server" class="form-control" placeholder="Год рождения" aria-label="Год рождения" id="docYear">
             </div>
             <div class="col-8">
-              <input type="text" class="form-control" placeholder="Телефон" aria-label="Телефон">
+              <input type="text" runat="server" class="form-control" placeholder="Телефон" aria-label="Телефон" id="docPhone">
             </div>
           </div>
         </div>
@@ -81,10 +86,16 @@
 
       <div class="row mb-4">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Университет" aria-label="Университет">
+          <div class="form-floating">
+            <input type="text" runat="server" class="form-control" placeholder="Университет" aria-label="Университет" id="docUniversity">
+            <label for="docUniversity">Университет: </label>
+          </div>
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Опыт (полных лет)" aria-label="Опыт (полных лет)">
+          <div class="form-floating">
+            <input type="text" runat="server" class="form-control" placeholder="Опыт (полных лет)" aria-label="Опыт (полных лет)" id="docExperience">
+            <label for="docExperience">Опыт (полных лет): </label>
+          </div>
         </div>
       </div>
 
@@ -96,13 +107,19 @@
 
       <div class="row mb-4">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Специализация" aria-label="Специализация">
+          <div class="form-floating">
+            <input type="text" runat="server" class="form-control" placeholder="Специализация" aria-label="Специализация" id="docType">
+            <label for="docType">Специализация: </label>
+          </div>
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Кабинет" aria-label="Кабинет">
+          <div class="form-floating">
+            <input type="text" runat="server" class="form-control" placeholder="Кабинет" aria-label="Кабинет" id="docRoom">
+            <label for="docRoom">Кабинет: </label>
+          </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary">Сохранить изменения</button>
+      <ASP:Button runat="server" class="btn btn-primary" Text="Сохранить изменения" OnClick="saveValue"></ASP:Button>
     </div>
   </div>
 </asp:Content>
