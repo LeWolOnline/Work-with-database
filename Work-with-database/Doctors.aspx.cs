@@ -125,7 +125,22 @@ namespace Work_with_database
     }
     public void addNewElement(Object sender, EventArgs e)
     {
-      
+      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      {
+        connection.Open();
+        int index = 0;
+        string query = "SELECT DoctorID FROM hospital.doctors;";
+        using (var command = new MySqlCommand(query, connection))
+        using (var reader = command.ExecuteReader())
+          while (reader.Read())
+            index = reader.GetInt32(0) > index ? reader.GetInt32(0) : index;
+        index += 1;
+        //string commandText = "INSERT INTO hospital.doctors (DoctorID, LastName, FirstName, Patronymic, Room, Type) VALUES (" + index + ", ' ', ' ', ' ', ' ', ' ');";
+        //using (var command = new MySqlCommand(commandText, connection))
+        //  command.ExecuteReader();
+        //hiSelect.Value = index.ToString();
+        readData(index.ToString());
+      }
     }
     private class ElementData
     {
