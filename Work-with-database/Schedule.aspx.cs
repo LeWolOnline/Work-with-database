@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Collections;
 using MySqlConnector;
 using System.Globalization;
+//using Microsoft.Office.Interopt.Word
 
 namespace Work_with_database
 {
@@ -22,7 +23,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         string query = "SELECT appointments.TreatyID, doctors.LastName, doctors.FirstName, doctors.Patronymic, " +
           "rooms.Room, patients.Fio, patients.Year, appointments.DateStart, appointments.TimeStart " +
@@ -52,7 +53,7 @@ namespace Work_with_database
     {
       string id = hiElementId.Value;
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string commandText = "SELECT appointments.DateStart, appointments.TimeStart, patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, patients.Address, districts.District, doctors.LastName, doctors.FirstName, doctors.Patronymic, rooms.Room, patients.Sign, treaties.Cost, appointments.Comment " +
@@ -84,7 +85,7 @@ namespace Work_with_database
     }
     public void saveValue(Object sender, EventArgs e)
     {
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string commandText = "UPDATE hospital.appointments" +

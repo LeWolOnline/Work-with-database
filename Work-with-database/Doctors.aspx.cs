@@ -22,7 +22,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection)) 
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection)) 
       {
         string quType = select != "" ? (" AND types.Type = '" + select + "'") : ("");
         string query = "SELECT doctors.LastName, doctors.FirstName, doctors.Patronymic, rooms.Room, types.Type, doctors.DoctorID " +
@@ -35,7 +35,13 @@ namespace Work_with_database
           int i = 1;
           while (reader.Read())
           {
-            values.Add(new ElementData(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5)));
+            values.Add(new ElementData(
+              connectToDB.SafeGetString(reader, 0)
+              , connectToDB.SafeGetString(reader, 1)
+              , connectToDB.SafeGetString(reader, 2)
+              , connectToDB.SafeGetString(reader, 3)
+              , connectToDB.SafeGetString(reader, 4)
+              , connectToDB.SafeGetString(reader, 5)));
             i++;
           }
         }
@@ -47,7 +53,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         string query = "SELECT DISTINCT types.Type FROM hospital.types;";
         connection.Open();
@@ -69,7 +75,7 @@ namespace Work_with_database
     {
       int id = int.Parse(hiElementId.Value);
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string commandText = "SELECT doctors.LastName, doctors.FirstName, doctors.Patronymic, doctors.Born, doctors.Phone, " +
@@ -82,32 +88,32 @@ namespace Work_with_database
         {
           while (reader.Read())
           {
-            docLastName.Value = reader.GetString(0);
-            docFirstName.Value = reader.GetString(1);
-            docPatronymic.Value = reader.GetString(2);
-            docYear.Value = reader.GetInt32(3).ToString();
-            docPhone.Value = reader.GetString(4);
-            docUniversity.Value = reader.GetString(5);
-            docExperience.Value = reader.GetInt32(6).ToString();
-            docType.Value = reader.GetString(7);
-            docRoom.Value = reader.GetInt32(8).ToString();
+            docLastName.Value = connectToDB.SafeGetString(reader, 0);
+            docFirstName.Value = connectToDB.SafeGetString(reader, 1);
+            docPatronymic.Value = connectToDB.SafeGetString(reader, 2);
+            docYear.Value = connectToDB.SafeGetString(reader, 3);
+            docPhone.Value = connectToDB.SafeGetString(reader, 4);
+            docUniversity.Value = connectToDB.SafeGetString(reader, 4);
+            docExperience.Value = connectToDB.SafeGetString(reader, 6);
+            docType.Value = connectToDB.SafeGetString(reader, 7);
+            docRoom.Value = connectToDB.SafeGetString(reader, "Room");
           }
         }
       }
     }
     public void saveValue(Object sender, EventArgs e)
     {
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
-        string commandText = "UPDATE hospital.doctors, hospital.types, hospital.rooms" + 
-          " SET doctors.LastName = '" + docLastName.Value + 
-          "', doctors.FirstName = '" + docFirstName.Value + 
-          "', doctors.Patronymic = '" + docPatronymic.Value + 
-          "', doctors.Born = " + int.Parse(docYear.Value) + 
+        string commandText = "UPDATE hospital.doctors, hospital.types, hospital.rooms" +
+          " SET doctors.LastName = '" + docLastName.Value +
+          "', doctors.FirstName = '" + docFirstName.Value +
+          "', doctors.Patronymic = '" + docPatronymic.Value +
+          "', doctors.Born = " + int.Parse(docYear.Value) +
           ", doctors.Phone = '" + docPhone.Value +
           "', doctors.University = '" + docUniversity.Value +
-          "', doctors.Experience = " + int.Parse(docExperience.Value) + 
+          "', doctors.Experience = " + int.Parse(docExperience.Value) +
           ", types.Type = '" + docType.Value +
           "', rooms.Room = " + int.Parse(docRoom.Value) +
           " WHERE doctors.DoctorID = types.DoctorID AND doctors.DoctorID = rooms.DoctorID" +
@@ -125,7 +131,7 @@ namespace Work_with_database
     }
     public void addNewElement(Object sender, EventArgs e)
     {
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         int index = 0;
@@ -145,12 +151,19 @@ namespace Work_with_database
     private class ElementData
     {
       public ElementData(string lastName = null, string firstName = null, string patronymic = null
-        , int cabinet = 0, string type = null, int id = 0)
+        , string cabinet = null, string type = null, string id = null)
       {
         Fio = lastName + " " + firstName + " " + patronymic;
-        Cabinet = cabinet;
+        try
+        {
+          Cabinet = int.Parse(cabinet);
+        }
+        catch
+        {
+          Cabinet = null;
+        }
         DocType = type;
-        Id = id;
+        Id = int.Parse(id);
       }
       public ElementData(string type = null)
       {
@@ -159,7 +172,7 @@ namespace Work_with_database
 
       public string Fio { get; }
       public int Id { get; }
-      public int Cabinet { get; }
+      public int? Cabinet { get; }
       public string DocType { get; }
     }
   }

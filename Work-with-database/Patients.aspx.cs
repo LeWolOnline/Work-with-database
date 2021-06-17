@@ -21,7 +21,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         string quType = select != "" ? (" AND districts.District = '" + select + "'") : ("");
         string query = "SELECT patients.PolicyNumber, patients.Fio, patients.Year, districts.District " +
@@ -46,7 +46,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection("Server=localhost;User ID=root;Password=2000;Database=hospital")) //LeWol/root
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         string query = "SELECT DISTINCT districts.District FROM hospital.districts;";
         connection.Open();
@@ -70,7 +70,7 @@ namespace Work_with_database
     {
       string id = hiElementId.Value;
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string commandText = "SELECT patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, districts.District, patients.Address, patients.Sign, patients.Department " +
@@ -96,7 +96,7 @@ namespace Work_with_database
     }
     public void saveValue(Object sender, EventArgs e)
     {
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string commandText = "UPDATE hospital.patients, hospital.districts" +

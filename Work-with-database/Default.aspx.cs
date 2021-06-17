@@ -11,7 +11,6 @@ namespace Work_with_database
 {
   public partial class _Default : Page
   {
-    public static String SQLconnection = "Server=localhost;User ID=root;Password=2000;Database=hospital";
     protected void Page_Load(object sender, EventArgs e)
     {
       readDoctors();
@@ -21,7 +20,7 @@ namespace Work_with_database
     {
       ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         string query = "SELECT doctors.DoctorID, doctors.LastName, doctors.FirstName, doctors.Patronymic FROM hospital.doctors;";
         connection.Open();
@@ -43,7 +42,7 @@ namespace Work_with_database
     public void saveValue(Object sender, EventArgs e)
     {
 
-      using (var connection = new MySqlConnection(_Default.SQLconnection))
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
         string[] policyNumbers = new string[] { };
