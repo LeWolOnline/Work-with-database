@@ -30,7 +30,10 @@ namespace Work_with_database
           int i = 1;
           while (reader.Read())
           {
-            values.Add(new ElementData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
+            values.Add(new ElementData(connectToDB.SafeGetString(reader, 0)
+              , connectToDB.SafeGetString(reader, 1)
+              , connectToDB.SafeGetString(reader, 2)
+              , connectToDB.SafeGetString(reader, 3)));
             i++;
           }
         }
@@ -68,12 +71,10 @@ namespace Work_with_database
           while (reader.Read())
             index = reader.GetInt32(0) > index ? reader.GetInt32(0) : index;
 
-        string commandText = "INSERT INTO hospital.appointments (TreatyID, DateStart, TimeStart, DoctorID, PolicyNumber, Comment) " +
+        query = "INSERT INTO hospital.appointments (TreatyID, DateStart, TimeStart, DoctorID, PolicyNumber, Comment) " +
           "VALUES (" + (index + 1).ToString() + ", '" + inputDate.Value + "', '" + inputTime.Value + "', '" + hiSelect.Value + "', '" + inputPolicyNumber.Value + "', ' ');";
-        
-        commandText += "\nINSERT INTO hospital.treaties (TreatyID, Cost, Summa) " +
-          "VALUES (" + (index + 1).ToString() + ", 0, 0);";
-        using (var command = new MySqlCommand(commandText, connection))
+        query += "\nINSERT INTO hospital.treaties (TreatyID, Cost, Summa) VALUES (" + (index + 1).ToString() + ", 0, 0);";
+        using (var command = new MySqlCommand(query, connection))
           command.ExecuteReader();
         inputDate.Value = "";
         inputTime.SelectedIndex = 0;
@@ -83,16 +84,17 @@ namespace Work_with_database
 
     private class ElementData
     {
-      public ElementData(int id = 0, string lastName = null, string firstName = null, string patronymic = null)
+      public ElementData(string id = null, string lastName = null, string firstName = null, string patronymic = null)
       {
+        int? parseId;
+        try { parseId = int.Parse(id); }
+        catch { parseId = null; }
         Fio = lastName + " " + firstName + " " + patronymic;
-        Id = id;
+        Id = parseId;
       }
 
       public string Fio { get; }
-      public int Id { get; }
-      public int Cabinet { get; }
-      public string DocType { get; }
+      public int? Id { get; }
     }
   }
 }

@@ -34,7 +34,10 @@ namespace Work_with_database
           int i = 1;
           while (reader.Read())
           {
-            values.Add(new ElementData(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
+            values.Add(new ElementData(connectToDB.SafeGetString(reader, 0)
+              , connectToDB.SafeGetString(reader, 1)
+              , connectToDB.SafeGetString(reader, 2)
+              , connectToDB.SafeGetString(reader, 3)));
             i++;
           }
         }
@@ -56,7 +59,7 @@ namespace Work_with_database
           int i = 1;
           while (reader.Read())
           {
-            values.Add(new ElementData(reader.GetString(0)));
+            values.Add(new ElementData(connectToDB.SafeGetString(reader, 0)));
             i++;
           }
         }
@@ -68,40 +71,46 @@ namespace Work_with_database
 
     public void getElementInfo(Object sender, EventArgs e)
     {
+      getElementInfo();
+    }
+    private void getElementInfo()
+    {
       string id = hiElementId.Value;
 
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
-        string commandText = "SELECT patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, districts.District, patients.Address, patients.Sign, patients.Department " +
+        string query = "SELECT patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, districts.District, patients.Address, patients.Sign, patients.Department " +
           "FROM hospital.patients, hospital.districts " +
           "WHERE patients.PolicyNumber = districts.PolicyNumber " +
           "AND patients.PolicyNumber = '" + id.ToString() + "';";
-        using (var command = new MySqlCommand(commandText, connection))
+        using (var command = new MySqlCommand(query, connection))
         using (var reader = command.ExecuteReader())
         {
           while (reader.Read())
           {
-            patFio.Value = reader.GetString(0);
-            patYear.Value = reader.GetInt32(1).ToString();
-            patId.Value = reader.GetString(2);
-            patCart.Value = reader.GetString(3);
-            patDistrict.Value = reader.GetString(4);
-            patAddress.Value = reader.GetString(5);
-            patWorker.Checked = reader.GetInt32(6) > 0;
-            patDepartment.Value = reader.GetInt32(6) > 0 ? reader.GetString(7) : "";
+            patFio.Value = connectToDB.SafeGetString(reader, 0);
+            patYear.Value = connectToDB.SafeGetString(reader, 1);
+            patId.Value = connectToDB.SafeGetString(reader, 2);
+            patCart.Value = connectToDB.SafeGetString(reader, 3);
+            patDistrict.Value = connectToDB.SafeGetString(reader, 4);
+            patAddress.Value = connectToDB.SafeGetString(reader, 5);
+            patWorker.Checked = connectToDB.ParseInt(connectToDB.SafeGetString(reader, 6)) > 0;
+            patDepartment.Value = connectToDB.ParseInt(connectToDB.SafeGetString(reader, 6)) > 0 ? connectToDB.SafeGetString(reader, 7) : "";
           }
         }
       }
+
+      btnDelete.Attributes.Add("OnClick", "return confirm('Уверены?');");
     }
     public void saveValue(Object sender, EventArgs e)
     {
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
-        string commandText = "UPDATE hospital.patients, hospital.districts" +
+        string query = "UPDATE hospital.patients, hospital.districts" +
           " SET patients.Fio = '" + patFio.Value +
-          "', patients.Year = " + int.Parse(patYear.Value) +
+          "', patients.Year = " + connectToDB.ParseIntReturnString(patYear.Value) +
           ", patients.PolicyNumber = '" + patId.Value +
           "', patients.Number = '" + patCart.Value +
           "', districts.District = '" + patDistrict.Value +
@@ -109,9 +118,9 @@ namespace Work_with_database
           "', patients.Sign = '" + patWorker.Checked.ToString() +
           "', patients.Department = '" + patDepartment.Value +
           " WHERE patients.PolicyNumber = districts.PolicyNumber" +
-          " AND patients.PolicyNumber = " + int.Parse(hiElementId.Value) + ";";
-        Console.WriteLine(commandText);
-        using (var command = new MySqlCommand(commandText, connection))
+          " AND patients.PolicyNumber = " + connectToDB.ParseIntReturnString(hiElementId.Value) + ";";
+        Console.WriteLine(query);
+        using (var command = new MySqlCommand(query, connection))
           command.ExecuteReader();
       }
       readData();
@@ -121,12 +130,44 @@ namespace Work_with_database
       string val = hiSelect.Value;
       readData(val);
     }
+
+    public void addNewElement(Object sender, EventArgs e)
+    {
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
+      {
+        connection.Open();
+        string patientNumber = newPatNumber.Value;
+        string patientFio = newPatFio.Value;
+        string query = "INSERT INTO hospital.patients (PolicyNumber, Fio) VALUES (" + patientNumber + ", '" + patientFio + "');";
+        query += "\nINSERT INTO hospital.districts (PolicyNumber) VALUES (" + patientNumber + ");";
+        using (var command = new MySqlCommand(query, connection))
+          command.ExecuteReader();
+        hiElementId.Value = patientNumber.ToString();
+        readData();
+        getElementInfo();
+      }
+    }
+
+    public void deleteValue(Object sender, EventArgs e)
+    {
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
+      {
+        connection.Open();
+        string query = "DELETE FROM hospital.patients WHERE (PolicyNumber = '" + hiElementId.Value + "');";
+        query += "\nDELETE FROM hospital.districts WHERE (PolicyNumber = '" + hiElementId.Value + "');";
+        using (var command = new MySqlCommand(query, connection))
+          command.ExecuteReader();
+        connection.Close();
+
+        Page.Response.Redirect(Page.Request.Url.ToString(), true);
+      }
+    }
     private class ElementData
     {
-      public ElementData(string id = null, string fio = null, int year = 0, string district = null)
+      public ElementData(string id = null, string fio = null, string year = null, string district = null)
       {
         Fio = fio;
-        Age = DateTime.Now.Year - year;
+        Age = (DateTime.Now.Year - connectToDB.ParseInt(year)).ToString();
         District = district;
         Id = id;
       }
@@ -137,7 +178,7 @@ namespace Work_with_database
 
       public string Fio { get; }
       public string Id { get; }
-      public int Age { get; }
+      public string Age { get; }
       public string District { get; }
     }
   }

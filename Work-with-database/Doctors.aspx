@@ -41,7 +41,7 @@
         </asp:Repeater>
 
       </div>
-      <ASP:Button runat="server" class="leftPanelButton" Text="Добавить нового врача" OnClick="addNewElement"></ASP:Button>
+      <asp:Button runat="server" class="leftPanelButton" Text="Добавить нового врача" OnClick="addNewElement"></asp:Button>
     </div>
 
     <div class="rightPanel container">
@@ -119,7 +119,14 @@
           </div>
         </div>
       </div>
-      <ASP:Button runat="server" class="btn btn-primary" Text="Сохранить изменения" OnClick="saveValue"></ASP:Button>
+      <div class="row mb-4">
+        <div class="col-3">
+          <asp:Button runat="server" class="btn btn-primary" Text="Сохранить изменения" OnClick="saveValue"></asp:Button>
+        </div>
+        <div class="col-3">
+          <asp:Button runat="server" ID="btnDelete" class="btn btn-primary" Text="Удалить врача" OnClick="deleteValue"></asp:Button>
+        </div>
+      </div>
     </div>
   </div>
 </asp:Content>

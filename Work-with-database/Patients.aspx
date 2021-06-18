@@ -21,11 +21,11 @@
         </select>
       </div>
       <div class="leftPanelElements">
-        
+
         <div style="display: none;">
           <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
         </div>
-        
+
         <asp:Repeater ID="elementsRepeater" runat="server">
           <ItemTemplate>
             <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Id")%>">
@@ -38,9 +38,9 @@
               </div>
             </div>
           </ItemTemplate>
-        </asp:Repeater>  
+        </asp:Repeater>
       </div>
-      <a href="./Settings" class="leftPanelButton">Добавить карточку нового пациента</a>
+      <button type="button" class="leftPanelButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить карточку нового пациента</button>
     </div>
 
     <div class="rightPanel container">
@@ -84,7 +84,41 @@
           <input type="text" runat="server" class="form-control" placeholder="Отдел, в котором работает" aria-label="Отдел, в котором работает" id="patDepartment">
         </div>
       </div>
-      <ASP:Button runat="server" class="btn btn-primary" Text="Сохранить изменения" OnClick="saveValue"></ASP:Button>
+      <div class="row mb-4">
+        <div class="col-3">
+          <asp:Button runat="server" class="btn btn-primary" Text="Сохранить изменения" OnClick="saveValue"></asp:Button>
+        </div>
+        <div class="col-3">
+          <asp:Button runat="server" ID="btnDelete" class="btn btn-primary" Text="Удалить пациента" OnClick="deleteValue"></asp:Button>
+        </div>
+      </div>
+    </div>
+    <div class="modalSide">
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Добавление нового пациента</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                  <label for="newPatNumber" class="col-form-label">Номер страхового полиса:</label>
+                  <input runat="server" type="text" class="form-control" id="newPatNumber">
+                </div>
+                <div class="mb-3">
+                  <label for="newPatFio" class="col-form-label">ФИО:</label>
+                  <input runat="server" type="text" class="form-control" id="newPatFio">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+              <asp:Button type="button" class="btn btn-primary" runat="server" OnClick="addNewElement" Text="Сохранить"></asp:Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </asp:Content>

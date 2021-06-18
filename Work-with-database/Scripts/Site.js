@@ -8,6 +8,7 @@ function initElements() {
     let button = document.getElementById("btnCallBack");
     button.click();
   }
+
   initSelector();
 }
 
@@ -27,4 +28,11 @@ function initSelector() {
       document.getElementById("btnCallBackSelect").click();
     });
   }
+}
+
+function printDoc() {
+  setTimeout(function () {
+    file = document.getElementById("hiPrintPatientFile").value;
+    file.print() }, 500);
+  
 }

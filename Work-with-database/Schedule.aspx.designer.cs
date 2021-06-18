@@ -42,6 +42,15 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiElementId;
 
     /// <summary>
+    /// hiPatientId элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiPatientId;
+
+    /// <summary>
     /// appDateTime элемент управления.
     /// </summary>
     /// <remarks>
@@ -103,6 +112,24 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl patDistrict;
+
+    /// <summary>
+    /// btPrintPatientFile элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btPrintPatientFile;
+
+    /// <summary>
+    /// hiPrintPatientFile элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiPrintPatientFile;
 
     /// <summary>
     /// docFio элемент управления.

@@ -49,6 +49,7 @@
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о записи</h2>
       <input type="hidden" id="hiElementId" runat="server" clientidmode="static" />
+      <input type="hidden" id="hiPatientId" runat="server" clientidmode="static" />
       <div class="row mb-4">
         <div class="col">
           <label runat="server" class="form-label" id="appDateTime">Дата и время записи</label>
@@ -84,7 +85,8 @@
       </div>
       <div class="row mb-4">
         <div class="col">
-          <button type="button" class="btn btn-primary" id="btPrintPatientFile">Распечатать карточку пациента</button>
+          <ASP:Button runat="server" type="button" class="btn btn-primary" id="btPrintPatientFile" Text="Распечатать карточку пациента" OnClick="printPatientFile"></ASP:Button>
+          <input type="hidden" id="hiPrintPatientFile" runat="server" clientidmode="static" />
         </div>
       </div>
 
