@@ -140,9 +140,9 @@
   <ItemGroup>
     <Content Include="Files\Курсач, вариант 4.txt" />
     <Content Include="Photo\NoPhoto.png" />
-    <Content Include="Schedule.aspx" />
-    <Content Include="Patients.aspx" />
-    <Content Include="Doctors.aspx" />
+    <Content Include="Documents.aspx" />
+    <Content Include="Flats.aspx" />
+    <Content Include="Buildings.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -204,26 +204,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="connectToDB.cs" />
-    <Compile Include="Schedule.aspx.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
+    <Compile Include="Documents.aspx.cs">
+      <DependentUpon>Documents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Schedule.aspx.designer.cs">
-      <DependentUpon>Schedule.aspx</DependentUpon>
+    <Compile Include="Documents.aspx.designer.cs">
+      <DependentUpon>Documents.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Patients.aspx.cs">
-      <DependentUpon>Patients.aspx</DependentUpon>
+    <Compile Include="Flats.aspx.cs">
+      <DependentUpon>Flats.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Patients.aspx.designer.cs">
-      <DependentUpon>Patients.aspx</DependentUpon>
+    <Compile Include="Flats.aspx.designer.cs">
+      <DependentUpon>Flats.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Doctors.aspx.cs">
-      <DependentUpon>Doctors.aspx</DependentUpon>
+    <Compile Include="Buildings.aspx.cs">
+      <DependentUpon>Buildings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Doctors.aspx.designer.cs">
-      <DependentUpon>Doctors.aspx</DependentUpon>
+    <Compile Include="Buildings.aspx.designer.cs">
+      <DependentUpon>Buildings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

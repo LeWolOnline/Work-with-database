@@ -69,76 +69,103 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiElementId;
 
     /// <summary>
-    /// patFio элемент управления.
+    /// Kadastr элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patFio;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Kadastr;
 
     /// <summary>
-    /// patYear элемент управления.
+    /// Storey элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patYear;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Storey;
 
     /// <summary>
-    /// patId элемент управления.
+    /// Flat элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patId;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Flat;
 
     /// <summary>
-    /// patCart элемент управления.
+    /// validPolicyNumber элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patCart;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validPolicyNumber;
 
     /// <summary>
-    /// patDistrict элемент управления.
+    /// Address элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patDistrict;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Address;
 
     /// <summary>
-    /// patAddress элемент управления.
+    /// Rooms элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patAddress;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Rooms;
 
     /// <summary>
-    /// patWorker элемент управления.
+    /// Height элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox patWorker;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Height;
 
     /// <summary>
-    /// patDepartment элемент управления.
+    /// SquareFlat элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText patDepartment;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText SquareFlat;
+
+    /// <summary>
+    /// Balcony элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Balcony;
+
+    /// <summary>
+    /// Dwell элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Dwell;
+
+    /// <summary>
+    /// Branch элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Branch;
 
     /// <summary>
     /// btnDelete элемент управления.
@@ -150,21 +177,21 @@ namespace Work_with_database
     protected global::System.Web.UI.WebControls.Button btnDelete;
 
     /// <summary>
-    /// newPatNumber элемент управления.
+    /// newFlatNumber элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText newPatNumber;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText newFlatNumber;
 
     /// <summary>
-    /// newPatFio элемент управления.
+    /// newFlatKadastr элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText newPatFio;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText newFlatKadastr;
   }
 }

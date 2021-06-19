@@ -13,48 +13,21 @@ namespace Work_with_database
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-      readDoctors();
-      ClientScript.RegisterStartupScript(GetType(), "Javascript", "javascript:initElements(); ", true);
-    }
-    private void readDoctors()
-    {
-      ArrayList values = new ArrayList();
 
-      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
-      {
-        string query = "SELECT doctors.DoctorID, doctors.LastName, doctors.FirstName, doctors.Patronymic FROM hospital.doctors;";
-        connection.Open();
-        using (var command = new MySqlCommand(query, connection))
-        using (var reader = command.ExecuteReader())
-        {
-          int i = 1;
-          while (reader.Read())
-          {
-            values.Add(new ElementData(connectToDB.SafeGetString(reader, 0)
-              , connectToDB.SafeGetString(reader, 1)
-              , connectToDB.SafeGetString(reader, 2)
-              , connectToDB.SafeGetString(reader, 3)));
-            i++;
-          }
-        }
-      }
-      typesRepeater.DataSource = values;
-      typesRepeater.DataBind();
     }
 
     public void saveValue(Object sender, EventArgs e)
     {
-
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
-        string[] policyNumbers = new string[] { };
-        string query = "SELECT PolicyNumber FROM hospital.patients;";
+        string[] flatNumbers = new string[] { };
+        string query = "SELECT Flat FROM flat;";
         using (var command = new MySqlCommand(query, connection))
         using (var reader = command.ExecuteReader())
           while (reader.Read())
-            policyNumbers = policyNumbers.Append(reader.GetString(0)).ToArray();
-        if (policyNumbers.Contains(inputPolicyNumber.Value))
+            flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
+        if (flatNumbers.Contains(inputFlatNumber.Value))
         {
           validPolicyNumber.Visible = false;
         }
@@ -65,36 +38,20 @@ namespace Work_with_database
         }
 
         int index = 0;
-        query = "SELECT TreatyID FROM hospital.appointments;";
+        query = "SELECT Record FROM documents;";
         using (var command = new MySqlCommand(query, connection))
         using (var reader = command.ExecuteReader())
           while (reader.Read())
             index = reader.GetInt32(0) > index ? reader.GetInt32(0) : index;
 
-        query = "INSERT INTO hospital.appointments (TreatyID, DateStart, TimeStart, DoctorID, PolicyNumber, Comment) " +
-          "VALUES (" + (index + 1).ToString() + ", '" + inputDate.Value + "', '" + inputTime.Value + "', '" + hiSelect.Value + "', '" + inputPolicyNumber.Value + "', ' ');";
-        query += "\nINSERT INTO hospital.treaties (TreatyID, Cost, Summa) VALUES (" + (index + 1).ToString() + ", 0, 0);";
+        query = "INSERT INTO documents (Flat, Record, Document, DateDoc, FioHost, Passport, Born, Part) " +
+          "VALUES (" + inputFlatNumber.Value + ", '" + (index + 1).ToString() + "', '" + inputDocType.Value + "', '" + inputDate.Value + "', '" +
+          inputFio.Value + "', '" + inputPassport.Value + "', '" + inputYear.Value + "', '" + inputPart.Value + "');";
         using (var command = new MySqlCommand(query, connection))
           command.ExecuteReader();
-        inputDate.Value = "";
-        inputTime.SelectedIndex = 0;
-        inputPolicyNumber.Value = "";
-      }
-    }
 
-    private class ElementData
-    {
-      public ElementData(string id = null, string lastName = null, string firstName = null, string patronymic = null)
-      {
-        int? parseId;
-        try { parseId = int.Parse(id); }
-        catch { parseId = null; }
-        Fio = lastName + " " + firstName + " " + patronymic;
-        Id = parseId;
+        Page.Response.Redirect(Page.Request.Url.ToString(), true);
       }
-
-      public string Fio { get; }
-      public int? Id { get; }
     }
   }
 }

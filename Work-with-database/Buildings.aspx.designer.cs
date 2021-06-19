@@ -11,7 +11,7 @@ namespace Work_with_database
 {
 
 
-  public partial class Doctors
+  public partial class Buildings
   {
 
     /// <summary>
@@ -69,85 +69,139 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiElementId;
 
     /// <summary>
-    /// docLastName элемент управления.
+    /// Kadastr элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docLastName;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Kadastr;
 
     /// <summary>
-    /// docFirstName элемент управления.
+    /// validPolicyNumber элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docFirstName;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validPolicyNumber;
 
     /// <summary>
-    /// docPatronymic элемент управления.
+    /// District элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docPatronymic;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText District;
 
     /// <summary>
-    /// docYear элемент управления.
+    /// Address элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docYear;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Address;
 
     /// <summary>
-    /// docPhone элемент управления.
+    /// Flow элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docPhone;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Flow;
 
     /// <summary>
-    /// docUniversity элемент управления.
+    /// Flats элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docUniversity;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Flats;
 
     /// <summary>
-    /// docExperience элемент управления.
+    /// Elevator элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docExperience;
+    protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Elevator;
 
     /// <summary>
-    /// docType элемент управления.
+    /// Land элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docType;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Land;
 
     /// <summary>
-    /// docRoom элемент управления.
+    /// Square элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText docRoom;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Square;
+
+    /// <summary>
+    /// Line элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Line;
+
+    /// <summary>
+    /// Year элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Year;
+
+    /// <summary>
+    /// Wear элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Wear;
+
+    /// <summary>
+    /// Material элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Material;
+
+    /// <summary>
+    /// Base элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText Base;
+
+    /// <summary>
+    /// Comment элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlTextArea Comment;
 
     /// <summary>
     /// btnDelete элемент управления.
@@ -157,5 +211,23 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnDelete;
+
+    /// <summary>
+    /// newKadastr элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText newKadastr;
+
+    /// <summary>
+    /// newAdress элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText newAdress;
   }
 }

@@ -10,7 +10,7 @@ namespace Work_with_database
   public static class connectToDB
   {
     //SET SQL_SAFE_UPDATES = 0;
-    public static String SQLconnection = "Server=localhost;User ID=root;Password=2000;Database=hospital";
+    public static String SQLconnection = "Server=localhost;User ID=root;Password=2000;Database=notary";
     public static string SafeGetString(this MySqlDataReader reader, int colIndex)
     {
       if (!reader.IsDBNull(colIndex))
@@ -35,6 +35,10 @@ namespace Work_with_database
     {
       try { return int.Parse(value).ToString(); }
       catch { return "Null"; }
+    }
+    public static string FloatToString(string value)
+    {
+      return value.Replace(",", ".");
     }
   }
 }

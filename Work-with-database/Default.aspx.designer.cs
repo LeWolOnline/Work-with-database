@@ -15,22 +15,13 @@ namespace Work_with_database
   {
 
     /// <summary>
-    /// hiSelect элемент управления.
+    /// inputFlatNumber элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiSelect;
-
-    /// <summary>
-    /// inputPolicyNumber элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText inputPolicyNumber;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText inputFlatNumber;
 
     /// <summary>
     /// validPolicyNumber элемент управления.
@@ -42,13 +33,13 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl validPolicyNumber;
 
     /// <summary>
-    /// typesRepeater элемент управления.
+    /// inputDocType элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Repeater typesRepeater;
+    protected global::System.Web.UI.HtmlControls.HtmlSelect inputDocType;
 
     /// <summary>
     /// inputDate элемент управления.
@@ -60,12 +51,39 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputDate;
 
     /// <summary>
-    /// inputTime элемент управления.
+    /// inputFio элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlSelect inputTime;
+    protected global::System.Web.UI.HtmlControls.HtmlInputText inputFio;
+
+    /// <summary>
+    /// inputPassport элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText inputPassport;
+
+    /// <summary>
+    /// inputYear элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText inputYear;
+
+    /// <summary>
+    /// inputPart элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputText inputPart;
   }
 }
