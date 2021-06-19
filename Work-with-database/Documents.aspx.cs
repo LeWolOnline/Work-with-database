@@ -13,7 +13,7 @@ using System.Drawing.Printing;
 
 namespace Work_with_database
 {
-  public partial class Schedule : Page
+  public partial class Documents : Page
   {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -27,13 +27,7 @@ namespace Work_with_database
 
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
-        string query = "SELECT appointments.TreatyID, doctors.LastName, doctors.FirstName, doctors.Patronymic, " +
-          "rooms.Room, patients.Fio, patients.Year, appointments.DateStart, appointments.TimeStart " +
-          "FROM hospital.patients, hospital.appointments, hospital.doctors, hospital.rooms " +
-          "WHERE patients.PolicyNumber = appointments.PolicyNumber " +
-          "AND doctors.DoctorID = appointments.DoctorID " +
-          "AND doctors.DoctorID = rooms.DoctorID " +
-          "ORDER BY appointments.DateStart;";
+        string query = "SELECT Record, Flat, DateDoc, FioHost FROM documents;";
         connection.Open();
         using (var command = new MySqlCommand(query, connection))
         using (var reader = command.ExecuteReader())
@@ -44,13 +38,8 @@ namespace Work_with_database
             values.Add(new ElementData(
               connectToDB.SafeGetString(reader, 0)
               , connectToDB.SafeGetString(reader, 1)
-              , connectToDB.SafeGetString(reader, 2)
-              , connectToDB.SafeGetString(reader, 3)
-              , connectToDB.SafeGetString(reader, 4)
-              , connectToDB.SafeGetString(reader, 5)
-              , connectToDB.SafeGetString(reader, 6)
-              , reader.GetDateTime(7)
-              , connectToDB.SafeGetString(reader, 8)));
+              , reader.GetDateTime(2)
+              , connectToDB.SafeGetString(reader, 3)));
             i++;
           }
         }
@@ -66,114 +55,39 @@ namespace Work_with_database
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();
-        string query = "SELECT appointments.DateStart, appointments.TimeStart, patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, patients.Address, districts.District, doctors.LastName, doctors.FirstName, doctors.Patronymic, rooms.Room, patients.Sign, treaties.Cost, appointments.Comment " +
-          "FROM hospital.patients, hospital.appointments, hospital.doctors, hospital.rooms, hospital.treaties, hospital.districts, hospital.exempts " +
-          "WHERE appointments.PolicyNumber = patients.PolicyNumber AND appointments.DoctorID = doctors.DoctorID AND appointments.TreatyID = treaties.TreatyID AND patients.PolicyNumber = districts.PolicyNumber AND doctors.DoctorID = rooms.DoctorID AND exempts.ExemptID = patients.ExemptID " +
-          "AND appointments.TreatyID = '" + id.ToString() + "';";
+        string query = "SELECT Record, Flat, DateDoc, Document, FioHost, Passport, Born, Part FROM documents " +
+          "WHERE Record = '" + id.ToString() + "';";
         using (var command = new MySqlCommand(query, connection))
         using (var reader = command.ExecuteReader())
         {
           while (reader.Read())
           {
-            hiPatientId.Value = connectToDB.SafeGetString(reader, 4);
-            appDateTime.InnerText = "Время записи: " + reader.GetDateTime(0).ToString("dd'/'MM'/'yyyy", new CultureInfo("ru-RU")) + " " + connectToDB.SafeGetString(reader, 1);
-            patFio.InnerText = connectToDB.SafeGetString(reader, 2);
-            patYear.InnerText = "Год рождения: " + connectToDB.SafeGetString(reader, 3);
-            patId.InnerText = "Полис: " + connectToDB.SafeGetString(reader, 4);
-            patCart.InnerText = "Номер карточки: " + connectToDB.SafeGetString(reader, 5);
-            patAddress.InnerText = "Адрес: " + connectToDB.SafeGetString(reader, 6);
-            patDistrict.InnerText = connectToDB.SafeGetString(reader, 7) + " район";
-            docFio.InnerText = connectToDB.SafeGetString(reader, 8) + " " + connectToDB.SafeGetString(reader, 9) + " " + connectToDB.SafeGetString(reader, 10);
-            docRoom.InnerText = "Кабинет: " + connectToDB.SafeGetString(reader, 11);
-            bool isWorker = connectToDB.ParseInt(connectToDB.SafeGetString(reader, 12)) > 0;
-            blockIsWorker.Visible = isWorker;
-            blockPay.Visible = blockPayBtn.Visible = !isWorker;
-            exeSumm.Value = isWorker ? "" : connectToDB.SafeGetString(reader, 13);
-            appComment.Value = connectToDB.SafeGetString(reader, 14);
+            Record.InnerText = "Номер записи о праве собственности: " + connectToDB.SafeGetString(reader, 0);
+            Flat.InnerText = "Номер квартиры: " + connectToDB.SafeGetString(reader, 1);
+            DateDoc.InnerText = "Дата документа о собственности: " + reader.GetDateTime(2).ToString("dd'/'MM'/'yyyy", new CultureInfo("ru-RU"));
+            Document.InnerText = "Документ на право собственности: " + connectToDB.SafeGetString(reader, 3);
+            FioHost.InnerText = "ФИО собственника: " + connectToDB.SafeGetString(reader, 4);
+            Passport.InnerText = "Номер паспорта: " + connectToDB.SafeGetString(reader, 5);
+            Born.InnerText = "Год рождения собственника: " + connectToDB.SafeGetString(reader, 6);
+            Part.InnerText = "Принадлежащая ему доля, %: " + connectToDB.SafeGetString(reader, 7);
           }
         }
       }
     }
-    public void saveValue(Object sender, EventArgs e)
-    {
-      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
-      {
-        connection.Open();
-        string query = "UPDATE hospital.appointments" +
-          " SET Comment = '" + appComment.Value +
-          "' WHERE appointments.TreatyID = " + connectToDB.ParseIntReturnString(hiElementId.Value) + ";";
-        Console.WriteLine(query);
-        using (var command = new MySqlCommand(query, connection))
-          command.ExecuteReader();
-      }
-      readData();
-    }
-    public void printPatientFile(Object sender, EventArgs e)
-    {
-      string sFileName = HttpContext.Current.Server.MapPath(@"~/Files/МедицинскаяКартаПациента.docx");
-      string sCopyFileName = HttpContext.Current.Server.MapPath(@"~/Files/МедицинскаяКартаПациентаКопия.docx");
-      File.Copy(sFileName, sCopyFileName, true);
-
-      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
-      {
-        connection.Open();
-        string query = "SELECT patients.Fio, patients.Year, patients.PolicyNumber, patients.Number, districts.District, patients.Address, patients.Sign, patients.Department, exempts.ExemptType " +
-          "FROM hospital.patients, hospital.districts, exempts " +
-          "WHERE patients.PolicyNumber = districts.PolicyNumber AND patients.ExemptID = exempts.ExemptID " +
-          "AND patients.PolicyNumber = '" + hiPatientId.Value + "';";
-        using (var command = new MySqlCommand(query, connection))
-        using (var reader = command.ExecuteReader())
-        {
-          while (reader.Read())
-          {
-            var valuesToFill = new TemplateEngine.Docx.Content(
-              new FieldContent("NumberOfPatientFile", connectToDB.SafeGetString(reader, 3))
-              , new FieldContent("Fio", connectToDB.SafeGetString(reader, 0))
-              , new FieldContent("Year", connectToDB.SafeGetString(reader, 1))
-              , new FieldContent("PolicyNumber", connectToDB.SafeGetString(reader, 2))
-              , new FieldContent("District", connectToDB.SafeGetString(reader, 4))
-              , new FieldContent("Address", connectToDB.SafeGetString(reader, 5))
-              , new FieldContent("IsWorker", (connectToDB.ParseInt(connectToDB.SafeGetString(reader, 6)) > 0) ? "Да" : "Нет")
-              , new FieldContent("Department", (connectToDB.ParseInt(connectToDB.SafeGetString(reader, 6)) > 0) ? connectToDB.SafeGetString(reader, 7) : "Нет")
-              , new FieldContent("Exempt", connectToDB.SafeGetString(reader, 8))
-            );
-            try
-            {
-              using (var outputDocument = new TemplateProcessor(sCopyFileName)
-              .SetRemoveContentControls(true))
-              {
-                outputDocument.FillContent(valuesToFill);
-                outputDocument.SaveChanges();
-              }
-            }
-            catch { Console.WriteLine("Возникла непредвиденная ошибка"); }
-          }
-        }
-        hiPrintPatientFile.Value = sCopyFileName;
-
-        ClientScript.RegisterClientScriptBlock(GetType(), "Javascript", "javascript:printDoc(); ", true);
-      }
-    }
+    
     private class ElementData
     {
-      public ElementData(string id, string lastName, string firstName, string patronymic
-        , string cabinet, string patientFio, string patientYear, DateTime data, string time)
+      public ElementData(string record, string flat, DateTime data, string fioHost)
       {
-        Id = id;
-        DocFio = lastName + " " + firstName + " " + patronymic;
-        DocCabinet = cabinet;
-        PatientFio = patientFio;
-        PatientAge = (DateTime.Now.Year - connectToDB.ParseInt(patientYear)).ToString();
+        Record = record;
+        Flat = flat;
+        FioHost = fioHost;
         Data = data.ToString("dd'/'MM'/'yyyy", new CultureInfo("ru-RU"));
-        Time = time;
       }
-      public string Id { get; }
-      public string DocFio { get; }
-      public string DocCabinet { get; }
-      public string PatientFio { get; }
-      public string PatientAge { get; }
+      public string Record { get; }
+      public string Flat { get; }
+      public string FioHost { get; }
       public string Data { get; }
-      public string Time { get; }
     }
   }
 }

@@ -29,10 +29,3 @@ function initSelector() {
     });
   }
 }
-
-function printDoc() {
-  setTimeout(function () {
-    file = document.getElementById("hiPrintPatientFile").value;
-    file.print() }, 500);
-  
-}

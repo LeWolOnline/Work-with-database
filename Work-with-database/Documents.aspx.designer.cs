@@ -11,7 +11,7 @@ namespace Work_with_database
 {
 
 
-  public partial class Schedule
+  public partial class Documents
   {
 
     /// <summary>
@@ -42,165 +42,75 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiElementId;
 
     /// <summary>
-    /// hiPatientId элемент управления.
+    /// Record элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiPatientId;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Record;
 
     /// <summary>
-    /// appDateTime элемент управления.
+    /// Flat элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl appDateTime;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Flat;
 
     /// <summary>
-    /// patFio элемент управления.
+    /// DateDoc элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patFio;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl DateDoc;
 
     /// <summary>
-    /// patYear элемент управления.
+    /// Document элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patYear;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Document;
 
     /// <summary>
-    /// patId элемент управления.
+    /// FioHost элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patId;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl FioHost;
 
     /// <summary>
-    /// patCart элемент управления.
+    /// Passport элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patCart;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Passport;
 
     /// <summary>
-    /// patAddress элемент управления.
+    /// Born элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patAddress;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Born;
 
     /// <summary>
-    /// patDistrict элемент управления.
+    /// Part элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl patDistrict;
-
-    /// <summary>
-    /// btPrintPatientFile элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btPrintPatientFile;
-
-    /// <summary>
-    /// hiPrintPatientFile элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiPrintPatientFile;
-
-    /// <summary>
-    /// docFio элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl docFio;
-
-    /// <summary>
-    /// docRoom элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl docRoom;
-
-    /// <summary>
-    /// blockIsWorker элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl blockIsWorker;
-
-    /// <summary>
-    /// blockPay элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl blockPay;
-
-    /// <summary>
-    /// exeSumm элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText exeSumm;
-
-    /// <summary>
-    /// blockPayBtn элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl blockPayBtn;
-
-    /// <summary>
-    /// btPrintPaymentDocument элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlButton btPrintPaymentDocument;
-
-    /// <summary>
-    /// appComment элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlTextArea appComment;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl Part;
   }
 }

@@ -52,7 +52,7 @@
               <div class="navbar-nav">
                 <a class="nav-link" runat="server" href="~/Buildings">Здания</a>
                 <a class="nav-link" runat="server" href="~/Flats">Квартиры</a>
-                <a class="nav-link" runat="server" href="~/Schedule">Архив договоров</a>
+                <a class="nav-link" runat="server" href="~/Documents">Архив договоров</a>
               </div>
             </div>
           </div>
