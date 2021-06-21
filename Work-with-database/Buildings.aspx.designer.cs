@@ -69,6 +69,15 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiElementId;
 
     /// <summary>
+    /// image элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlImage image;
+
+    /// <summary>
     /// Kadastr элемент управления.
     /// </summary>
     /// <remarks>
@@ -130,6 +139,24 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Elevator;
+
+    /// <summary>
+    /// inputImgUploader элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputFile inputImgUploader;
+
+    /// <summary>
+    /// imgUploader элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button imgUploader;
 
     /// <summary>
     /// Land элемент управления.

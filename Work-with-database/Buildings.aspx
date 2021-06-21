@@ -49,7 +49,11 @@
       <input type="hidden" id="hiElementId" runat="server" clientidmode="static" />
       <div class="row mb-4">
         <div class="col-4">
-          <img src="~/Photo/NoPhoto.png" runat="server" class="float-end img-thumbnail" alt="no photo">
+          <div class="row mb-1">
+            <div class="col">
+              <img runat="server" id="image" src="~/Photo/NoPhoto.png" runat="server" class="float-end img-thumbnail" alt="no photo">
+            </div>
+          </div>
         </div>
         <div class="col">
           <div class="row mb-3">
@@ -95,6 +99,15 @@
         </div>
       </div>
 
+
+      <div class="row mb-3">
+        <div class="col">
+          <input type="file" accept=".jpg" class="form-control" id="inputImgUploader" runat="server"/>
+        </div>
+        <div class="col">
+          <asp:Button runat="server" class="btn btn-primary" ID="imgUploader" Text="Загрузить" OnClick="uploadPhoto"/>
+        </div>
+      </div>
 
       <div class="row mb-3">
         <div class="col">

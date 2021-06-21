@@ -9,13 +9,16 @@ using MySqlConnector;
 
 namespace Work_with_database
 {
-  public partial class Patients : Page
+  public partial class Flats : Page
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-      readKadastrs();
-      readData();
-      ClientScript.RegisterStartupScript(GetType(), "Javascript", "javascript:initElements(); ", true);
+      if (!IsPostBack && !IsCallback)
+      {
+        readKadastrs();
+        readData();
+        ClientScript.RegisterStartupScript(GetType(), "Javascript", "javascript:initElements(); ", true);
+      }
     }
     private void readData(string select = "")
     {
@@ -140,7 +143,6 @@ namespace Work_with_database
           "', Balcony = '" + connectToDB.FloatToString(Balcony.Value) +
           "' WHERE flat.Flat = flats.Flat" +
           " AND flat.Flat = " + connectToDB.ParseIntReturnString(hiElementId.Value) + ";";
-        Console.WriteLine(query);
         using (var command = new MySqlCommand(query, connection))
           command.ExecuteReader();
       }
@@ -153,7 +155,6 @@ namespace Work_with_database
     }
     public void addNewElement(Object sender, EventArgs e)
     {     
-      //ПРОВЕРЯТЬ ЧТО ID НЕ ДУБЛИРУЕТСЯ
       using (var connection = new MySqlConnection(connectToDB.SQLconnection))
       {
         connection.Open();

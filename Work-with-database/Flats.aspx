@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Квартиры" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Flats.aspx.cs" Inherits="Work_with_database.Patients" %>
+﻿<%@ Page Title="Квартиры" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Flats.aspx.cs" Inherits="Work_with_database.Flats" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="page">
