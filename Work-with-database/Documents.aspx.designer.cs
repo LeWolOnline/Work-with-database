@@ -15,24 +15,6 @@ namespace Work_with_database
   {
 
     /// <summary>
-    /// btnCallBack элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCallBack;
-
-    /// <summary>
-    /// elementsRepeater элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Repeater elementsRepeater;
-
-    /// <summary>
     /// hiElementId элемент управления.
     /// </summary>
     /// <remarks>
@@ -112,5 +94,23 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl Part;
+
+    /// <summary>
+    /// btnCallBack элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnCallBack;
+
+    /// <summary>
+    /// elementsRepeater элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater elementsRepeater;
   }
 }

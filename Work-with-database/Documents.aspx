@@ -2,36 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="page">
-    <div class="leftPanel container">
-      <h2><%: Title %></h2>
-      <%--<div class="leftPanelFilter">
-        <div class="form-group">
-          <input id="inputDate" type="date" class="form-control">
-        </div>
-      </div>--%>
-      <div class="leftPanelElements">
-
-        <div style="display: none;">
-          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
-        </div>
-
-        <asp:Repeater ID="elementsRepeater" runat="server">
-          <ItemTemplate>
-            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Record")%>">
-              <div class="leftPanelElementDataRow">
-                <div class="Sсhedule_DocCabinet">#<%# DataBinder.Eval(Container.DataItem, "Record")%></div>
-                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Data")%></div>
-              </div>
-              <div class="leftPanelElementDataRow">
-                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Flat")%> кв.</div>
-                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "FioHost")%></div>
-              </div>
-            </div>
-          </ItemTemplate>
-        </asp:Repeater>
-      </div>
-    </div>
-
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о записи</h2>
       <input type="hidden" id="hiElementId" runat="server" clientidmode="static" />
@@ -78,5 +48,30 @@
         </div>
       </div>
     </div>
+    <div class="leftPanel container">
+      <h2><%: Title %></h2>
+      <div class="leftPanelElements">
+
+        <div style="display: none;">
+          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
+        </div>
+
+        <asp:Repeater ID="elementsRepeater" runat="server">
+          <ItemTemplate>
+            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Record")%>">
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_DocCabinet">#<%# DataBinder.Eval(Container.DataItem, "Record")%></div>
+                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Data")%></div>
+              </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "Flat")%> кв.</div>
+                <div class="Sсhedule_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "FioHost")%></div>
+              </div>
+            </div>
+          </ItemTemplate>
+        </asp:Repeater>
+      </div>
+    </div>
+
   </div>
 </asp:Content>

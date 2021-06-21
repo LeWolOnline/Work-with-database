@@ -2,48 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="page">
-    <div class="leftPanel container">
-
-      <h2><%: Title %></h2>
-      <div class="leftPanelFilter">
-        <input type="hidden" id="hiSelect" runat="server" clientidmode="static" />
-        <div style="display: none;">
-          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBackSelect" OnClick="selectUpdate" />
-        </div>
-        <select id="selector" class="form-select" aria-label="Район города">
-          <option selected>Выбрать район</option>
-          <option value="">Все</option>
-          <asp:Repeater ID="typesRepeater" runat="server">
-            <ItemTemplate>
-              <option value="<%# DataBinder.Eval(Container.DataItem, "District")%>"><%# DataBinder.Eval(Container.DataItem, "District")%></option>
-            </ItemTemplate>
-          </asp:Repeater>
-        </select>
-      </div>
-      <div class="leftPanelElements">
-
-        <div style="display: none;">
-          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
-        </div>
-
-        <asp:Repeater ID="elementsRepeater" runat="server">
-          <ItemTemplate>
-            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Kadastr")%>">
-              <div class="leftPanelElementDataRow">
-                <div class="Buildings_DocFio">Кадастр: <%# DataBinder.Eval(Container.DataItem, "Kadastr")%></div>
-                <div class="Buildings_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "District")%> район</div>
-              </div>
-              <div class="leftPanelElementDataRow">
-                <div class="Buildings_DocType"><%# DataBinder.Eval(Container.DataItem, "Address")%></div>
-              </div>
-            </div>
-          </ItemTemplate>
-        </asp:Repeater>
-
-      </div>
-      <button type="button" class="leftPanelButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить новое здание в базу</button>
-    </div>
-
     <div class="rightPanel container">
       <h2 class="mb-5">Информация о здании</h2>
       <input type="hidden" id="hiElementId" runat="server" clientidmode="static" />
@@ -176,6 +134,48 @@
           <asp:Button runat="server" ID="btnDelete" class="btn btn-primary" Text="Удалить здание" OnClick="deleteValue"></asp:Button>
         </div>
       </div>
+    </div>
+    
+    <div class="leftPanel container">
+
+      <h2><%: Title %></h2>
+      <div class="leftPanelFilter">
+        <input type="hidden" id="hiSelect" runat="server" clientidmode="static" />
+        <div style="display: none;">
+          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBackSelect" OnClick="selectUpdate" />
+        </div>
+        <select id="selector" class="form-select" aria-label="Район города">
+          <option selected>Выбрать район</option>
+          <option value="">Все</option>
+          <asp:Repeater ID="typesRepeater" runat="server">
+            <ItemTemplate>
+              <option value="<%# DataBinder.Eval(Container.DataItem, "District")%>"><%# DataBinder.Eval(Container.DataItem, "District")%></option>
+            </ItemTemplate>
+          </asp:Repeater>
+        </select>
+      </div>
+      <div class="leftPanelElements">
+
+        <div style="display: none;">
+          <asp:Button runat="server" ClientIDMode="static" ID="btnCallBack" OnClick="getElementInfo" />
+        </div>
+
+        <asp:Repeater ID="elementsRepeater" runat="server">
+          <ItemTemplate>
+            <div class="leftPanelElementBlock" id="<%# DataBinder.Eval(Container.DataItem, "Kadastr")%>">
+              <div class="leftPanelElementDataRow">
+                <div class="Buildings_DocFio">Кадастр: <%# DataBinder.Eval(Container.DataItem, "Kadastr")%></div>
+                <div class="Buildings_DocCabinet"><%# DataBinder.Eval(Container.DataItem, "District")%> район</div>
+              </div>
+              <div class="leftPanelElementDataRow">
+                <div class="Buildings_DocType"><%# DataBinder.Eval(Container.DataItem, "Address")%></div>
+              </div>
+            </div>
+          </ItemTemplate>
+        </asp:Repeater>
+
+      </div>
+      <button type="button" class="leftPanelButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Добавить новое здание в базу</button>
     </div>
 
     <div class="modalSide">

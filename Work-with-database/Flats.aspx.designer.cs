@@ -15,51 +15,6 @@ namespace Work_with_database
   {
 
     /// <summary>
-    /// hiSelect элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiSelect;
-
-    /// <summary>
-    /// btnCallBackSelect элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCallBackSelect;
-
-    /// <summary>
-    /// districtsRepeater элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Repeater districtsRepeater;
-
-    /// <summary>
-    /// btnCallBack элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnCallBack;
-
-    /// <summary>
-    /// elementsRepeater элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически создаваемое поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Repeater elementsRepeater;
-
-    /// <summary>
     /// hiElementId элемент управления.
     /// </summary>
     /// <remarks>
@@ -175,6 +130,51 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnDelete;
+
+    /// <summary>
+    /// hiSelect элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlInputHidden hiSelect;
+
+    /// <summary>
+    /// btnCallBackSelect элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnCallBackSelect;
+
+    /// <summary>
+    /// districtsRepeater элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater districtsRepeater;
+
+    /// <summary>
+    /// btnCallBack элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnCallBack;
+
+    /// <summary>
+    /// elementsRepeater элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater elementsRepeater;
 
     /// <summary>
     /// newFlatNumber элемент управления.
