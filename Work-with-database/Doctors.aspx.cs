@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
 using MySqlConnector;
+using System.IO;
+using System.Data;
 
 namespace Work_with_database
 {
@@ -105,6 +107,79 @@ namespace Work_with_database
         }
       }
       btnDelete.Attributes.Add("OnClick", "return confirm('Уверены?');");
+      getPicture();
+    }
+
+    private void getPicture()
+    {
+      bool isGetPicture = false;
+      int id = int.Parse(hiElementId.Value);
+      string sFileName = HttpContext.Current.Server.MapPath(@"~/Files/img.jpg");
+
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
+      {
+        connection.Open();
+        string query = "SELECT Picture FROM doctors WHERE doctors.DoctorID = " + id.ToString() + ";";
+        var command = new MySqlCommand(query, connection);
+        // Writes the BLOB to a file.  
+        FileStream stream;
+        // Streams the BLOB to the FileStream object.  
+        BinaryWriter writer;
+
+        // Size of the BLOB buffer.  
+        int bufferSize = 100;
+        // The BLOB byte[] buffer to be filled by GetBytes.  
+        byte[] outByte = new byte[bufferSize];
+        // The bytes returned from GetBytes.  
+        long retval;
+        // The starting position in the BLOB output.  
+        long startIndex = 0;
+
+        // Open the connection and read data into the DataReader. 
+        MySqlDataReader reader = command.ExecuteReader(CommandBehavior.SequentialAccess);
+
+        while (reader.Read())
+        {
+          // Create a file to hold the output.  
+          stream = new FileStream(sFileName, FileMode.OpenOrCreate, FileAccess.Write);
+          writer = new BinaryWriter(stream);
+
+          // Reset the starting byte for the new BLOB.  
+          startIndex = 0;
+
+          // Read bytes into outByte[] and retain the number of bytes returned.  
+          retval = reader.GetBytes(0, startIndex, outByte, 0, bufferSize);
+
+          // Continue while there are bytes beyond the size of the buffer.  
+          while (retval == bufferSize)
+          {
+            isGetPicture = true;
+            writer.Write(outByte);
+            writer.Flush();
+
+            // Reposition start index to end of last buffer and fill buffer.  
+            startIndex += bufferSize;
+            retval = reader.GetBytes(0, startIndex, outByte, 0, bufferSize);
+          }
+
+          // Write the remaining buffer.  
+          writer.Write(outByte, 0, (int)retval);
+          writer.Flush();
+
+          // Close the output file.  
+          writer.Close();
+          stream.Close();
+
+          if (isGetPicture)
+          {
+            image.Src = "/Files/img.jpg";
+          }
+          else
+          {
+            image.Src = "/Photo/NoPhoto.png";
+          }
+        }
+      }
     }
 
     public void saveValue(Object sender, EventArgs e)
@@ -173,6 +248,35 @@ namespace Work_with_database
         Page.Response.Redirect(Page.Request.Url.ToString(), true);
       }
     }
+
+    public void uploadPhoto(Object sender, EventArgs e)
+    {
+      HttpPostedFile file = inputImgUploader.PostedFile;
+      byte[] fileData = null;
+      using (var binaryReader = new BinaryReader(file.InputStream))
+      {
+        fileData = binaryReader.ReadBytes(file.ContentLength);
+      }
+
+      string queryStmt = "UPDATE doctors" +
+            " SET Picture = @Content" +
+            " WHERE doctors.DoctorID = " + hiElementId.Value + ";";
+
+      using (MySqlConnection connection = new MySqlConnection(connectToDB.SQLconnection))
+      using (MySqlCommand _cmd = new MySqlCommand(queryStmt, connection))
+      {
+        MySqlParameter param = _cmd.Parameters.Add("@Content", MySqlDbType.VarBinary);
+        param.Value = fileData;
+
+        connection.Open();
+        _cmd.ExecuteNonQuery();
+        connection.Close();
+      }
+
+      getPicture();
+    }
+
+
     private class ElementData
     {
       public ElementData(string lastName = null, string firstName = null, string patronymic = null
@@ -200,5 +304,7 @@ namespace Work_with_database
       public int? Cabinet { get; }
       public string DocType { get; }
     }
+
+
   }
 }
