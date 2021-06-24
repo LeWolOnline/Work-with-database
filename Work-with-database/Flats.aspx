@@ -24,7 +24,7 @@
             <input type="text" runat="server" class="form-control" placeholder="Номер квартиры" aria-label="Номер квартиры" id="Flat">
             <label for="Flat">Номер квартиры</label>
           </div>
-          <label runat="server" id="validPolicyNumber" style="color:red" visible="false">
+          <label runat="server" id="validFlat" style="color:red" visible="false">
             Квартира с таким номером уже существует
           </label>
         </div>
@@ -142,6 +142,11 @@
               <div class="mb-3">
                 <label for="newPatNumber" class="col-form-label">Номер квартиры:</label>
                 <input runat="server" type="text" class="form-control" id="newFlatNumber">
+              </div>
+              <div class="mb-3">
+                <label runat="server" id="validNewFlat" style="color:red" visible="false">
+                  Квартира с таким номером уже существует
+                </label>
               </div>
               <div class="mb-3">
                 <label for="newPatFio" class="col-form-label">Кадастровый номер здания:</label>

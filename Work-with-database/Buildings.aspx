@@ -17,7 +17,7 @@
           <div class="row mb-3">
             <div class="col">
               <input type="text" runat="server" class="form-control" placeholder="Кадастровый номер" aria-label="Кадастровый номер" id="Kadastr">
-              <label runat="server" id="validPolicyNumber" style="color: red" visible="false">
+              <label runat="server" id="validKadastr" style="color: red" visible="false">
                 Такой номер уже есть в базе
               </label>
             </div>
@@ -190,6 +190,11 @@
               <div class="mb-3">
                 <label for="newKadastr" class="col-form-label">Кадастровый номер здания:</label>
                 <input runat="server" type="text" class="form-control" id="newKadastr">
+              </div>
+              <div class="mb-3">
+                <label runat="server" id="validKadasrtOfNewElement" style="color: red" visible="false">
+                Такой номер уже есть в базе
+                </label>
               </div>
               <div class="mb-3">
                 <label for="newAdress" class="col-form-label">Адрес здания:</label>

@@ -121,13 +121,13 @@ namespace Work_with_database
         using (var reader = command.ExecuteReader())
           while (reader.Read())
             flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
-        if (flatNumbers.Contains(Flat.Value))
+        if (!flatNumbers.Contains(Flat.Value))
         {
-          validPolicyNumber.Visible = false;
+          validFlat.Visible = false;
         }
         else
         {
-          validPolicyNumber.Visible = true;
+          validFlat.Visible = true;
           return;
         }
 
@@ -165,13 +165,13 @@ namespace Work_with_database
         using (var reader = command.ExecuteReader())
           while (reader.Read())
             flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
-        if (flatNumbers.Contains(newFlatNumber.Value))
+        if (!flatNumbers.Contains(newFlatNumber.Value))
         {
-          validPolicyNumber.Visible = false;
+          validNewFlat.Visible = false;
         }
         else
         {
-          validPolicyNumber.Visible = true;
+          validNewFlat.Visible = true;
           return;
         }
 

@@ -144,9 +144,13 @@ namespace Work_with_database
 
         // Open the connection and read data into the DataReader. 
         MySqlDataReader reader = command.ExecuteReader(CommandBehavior.SequentialAccess);
-
         while (reader.Read())
         {
+          if (reader.IsDBNull(0))
+          {
+            image.Src = "/Photo/NoPhoto.png";
+            return;
+          }
           // Create a file to hold the output.  
           stream = new FileStream(sFileName, FileMode.OpenOrCreate, FileAccess.Write);
           writer = new BinaryWriter(stream);
@@ -200,13 +204,13 @@ namespace Work_with_database
         using (var reader = command.ExecuteReader())
           while (reader.Read())
             flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
-        if (flatNumbers.Contains(Kadastr.Value))
+        if (!flatNumbers.Contains(Kadastr.Value))
         {
-          validPolicyNumber.Visible = false;
+          validKadastr.Visible = false;
         }
         else
         {
-          validPolicyNumber.Visible = true;
+          validKadastr.Visible = true;
           return;
         }
 
@@ -252,12 +256,12 @@ namespace Work_with_database
             flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
         if (flatNumbers.Contains(newKadastr.Value))
         {
-          validPolicyNumber.Visible = false;
+          validKadasrtOfNewElement.Visible = true;
+          return;
         }
         else
         {
-          validPolicyNumber.Visible = true;
-          return;
+          validKadasrtOfNewElement.Visible = false;
         }
 
         string Kadastr = newKadastr.Value;

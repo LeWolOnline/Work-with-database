@@ -51,13 +51,13 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputText Flat;
 
     /// <summary>
-    /// validPolicyNumber элемент управления.
+    /// validFlat элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validPolicyNumber;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validFlat;
 
     /// <summary>
     /// Address элемент управления.
@@ -184,6 +184,15 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlInputText newFlatNumber;
+
+    /// <summary>
+    /// validNewFlat элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validNewFlat;
 
     /// <summary>
     /// newFlatKadastr элемент управления.

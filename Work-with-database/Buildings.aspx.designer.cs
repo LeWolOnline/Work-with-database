@@ -42,13 +42,13 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlInputText Kadastr;
 
     /// <summary>
-    /// validPolicyNumber элемент управления.
+    /// validKadastr элемент управления.
     /// </summary>
     /// <remarks>
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validPolicyNumber;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validKadastr;
 
     /// <summary>
     /// District элемент управления.
@@ -247,6 +247,15 @@ namespace Work_with_database
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlInputText newKadastr;
+
+    /// <summary>
+    /// validKadasrtOfNewElement элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl validKadasrtOfNewElement;
 
     /// <summary>
     /// newAdress элемент управления.
