@@ -140,6 +140,11 @@ namespace Work_with_database
 
         while (reader.Read())
         {
+          if (reader.IsDBNull(0))
+          {
+            image.Src = "/Photo/NoPhoto.png";
+            return;
+          }
           // Create a file to hold the output.  
           stream = new FileStream(sFileName, FileMode.OpenOrCreate, FileAccess.Write);
           writer = new BinaryWriter(stream);
