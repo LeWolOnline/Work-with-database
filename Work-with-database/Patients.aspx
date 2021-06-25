@@ -103,14 +103,19 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="mb-3">
-                  <label for="newPatNumber" class="col-form-label">Номер страхового полиса:</label>
-                  <input runat="server" type="text" class="form-control" id="newPatNumber">
-                </div>
-                <div class="mb-3">
-                  <label for="newPatFio" class="col-form-label">ФИО:</label>
-                  <input runat="server" type="text" class="form-control" id="newPatFio">
-                </div>
+              <div class="mb-3">
+                <label for="newPatNumber" class="col-form-label">Номер страхового полиса:</label>
+                <input runat="server" type="text" class="form-control" id="newPatNumber">
+              </div>
+              <div class="mb-3">
+                <label runat="server" id="validNewPolicyNumber" style="color: red" visible="false">
+                  Пользователя с таким полисом уже есть в системе
+                </label>
+              </div>
+              <div class="mb-3">
+                <label for="newPatFio" class="col-form-label">ФИО:</label>
+                <input runat="server" type="text" class="form-control" id="newPatFio">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

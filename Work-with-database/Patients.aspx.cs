@@ -138,7 +138,24 @@ namespace Work_with_database
         connection.Open();
         string patientNumber = newPatNumber.Value;
         string patientFio = newPatFio.Value;
-        string query = "INSERT INTO hospital.patients (PolicyNumber, Fio) VALUES (" + patientNumber + ", '" + patientFio + "');";
+
+        string[] policyNumbers = new string[] { };
+        string query = "SELECT PolicyNumber FROM hospital.patients;";
+        using (var command = new MySqlCommand(query, connection))
+        using (var reader = command.ExecuteReader())
+          while (reader.Read())
+            policyNumbers = policyNumbers.Append(reader.GetString(0)).ToArray();
+        if (!policyNumbers.Contains(patientNumber))
+        {
+          validNewPolicyNumber.Visible = false;
+        }
+        else
+        {
+          validNewPolicyNumber.Visible = true;
+          return;
+        }
+
+        query = "INSERT INTO hospital.patients (PolicyNumber, Fio) VALUES (" + patientNumber + ", '" + patientFio + "');";
         query += "\nINSERT INTO hospital.districts (PolicyNumber) VALUES (" + patientNumber + ");";
         using (var command = new MySqlCommand(query, connection))
           command.ExecuteReader();
