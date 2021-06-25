@@ -17,8 +17,8 @@ namespace Work_with_database
       {
         readKadastrs();
         readData();
-        ClientScript.RegisterStartupScript(GetType(), "Javascript", "javascript:initElements(); ", true);
       }
+      ClientScript.RegisterStartupScript(GetType(), "Javascript", "javascript:initElements(); ", true);
     }
     private void readData(string select = "")
     {

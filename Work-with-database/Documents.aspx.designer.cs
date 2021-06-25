@@ -96,6 +96,15 @@ namespace Work_with_database
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl Part;
 
     /// <summary>
+    /// printDoc элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически создаваемое поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlAnchor printDoc;
+
+    /// <summary>
     /// btnCallBack элемент управления.
     /// </summary>
     /// <remarks>

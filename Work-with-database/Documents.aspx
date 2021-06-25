@@ -47,6 +47,11 @@
           <label runat="server" id="Part">Принадлежащая ему доля, %</label>
         </div>
       </div>
+      <div class="row mb-4">
+        <div class="col">
+          <a runat="server" class="btn btn-primary" href="/Files/Договор.docx" download="Договор.docx" id="printDoc">Скачать договор</a>
+        </div>
+      </div>
     </div>
     <div class="leftPanel container">
       <h2><%: Title %></h2>

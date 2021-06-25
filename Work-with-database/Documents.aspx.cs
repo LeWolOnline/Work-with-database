@@ -9,6 +9,7 @@ using MySqlConnector;
 using System.Globalization;
 using System.IO;
 using System.Drawing.Printing;
+using TemplateEngine.Docx;
 
 namespace Work_with_database
 {
@@ -72,8 +73,48 @@ namespace Work_with_database
           }
         }
       }
+      getDocument();
     }
-    
+    public void getDocument()
+    {
+      string sFileName = HttpContext.Current.Server.MapPath(@"~/Files/ШаблонДоговора.docx");
+      string sCopyFileName = HttpContext.Current.Server.MapPath(@"~/Files/Договор.docx");
+      File.Copy(sFileName, sCopyFileName, true);
+
+      using (var connection = new MySqlConnection(connectToDB.SQLconnection))
+      {
+        connection.Open();
+        string query = "SELECT Record, Flat, DateDoc, Document, FioHost, Passport, Born, Part FROM documents " +
+          "WHERE Record = '" + hiElementId.Value + "';";
+        using (var command = new MySqlCommand(query, connection))
+        using (var reader = command.ExecuteReader())
+        {
+          while (reader.Read())
+          {
+            var valuesToFill = new TemplateEngine.Docx.Content(
+              new FieldContent("NumberOfDocument", connectToDB.SafeGetString(reader, 0))
+              , new FieldContent("Flat", connectToDB.SafeGetString(reader, 1))
+              , new FieldContent("Date", reader.GetDateTime(2).ToString("dd'/'MM'/'yyyy", new CultureInfo("ru-RU")))
+              , new FieldContent("Document", connectToDB.SafeGetString(reader, 3))
+              , new FieldContent("Fio", connectToDB.SafeGetString(reader, 4))
+              , new FieldContent("Passport", connectToDB.SafeGetString(reader, 5))
+              , new FieldContent("Year", connectToDB.SafeGetString(reader, 6))
+              , new FieldContent("Part", connectToDB.SafeGetString(reader, 7))
+            );
+            try
+            {
+              using (var outputDocument = new TemplateProcessor(sCopyFileName)
+              .SetRemoveContentControls(true))
+              {
+                outputDocument.FillContent(valuesToFill);
+                outputDocument.SaveChanges();
+              }
+            }
+            catch { Console.WriteLine("Возникла непредвиденная ошибка"); }
+          }
+        }
+      }
+    }
     private class ElementData
     {
       public ElementData(string record, string flat, DateTime data, string fioHost)
