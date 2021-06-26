@@ -30,7 +30,7 @@ namespace Work_with_database
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText Kadastr;
+    protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Kadastr;
 
     /// <summary>
     /// Storey элемент управления.
@@ -39,7 +39,7 @@ namespace Work_with_database
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText Storey;
+    protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Storey;
 
     /// <summary>
     /// Flat элемент управления.
@@ -48,7 +48,7 @@ namespace Work_with_database
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText Flat;
+    protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Flat;
 
     /// <summary>
     /// validFlat элемент управления.
@@ -75,7 +75,7 @@ namespace Work_with_database
     /// Автоматически создаваемое поле.
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlInputText Rooms;
+    protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Rooms;
 
     /// <summary>
     /// Height элемент управления.

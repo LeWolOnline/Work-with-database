@@ -121,13 +121,9 @@ namespace Work_with_database
         using (var reader = command.ExecuteReader())
           while (reader.Read())
             flatNumbers = flatNumbers.Append(connectToDB.SafeGetString(reader, 0)).ToArray();
-        if (!flatNumbers.Contains(Flat.Value))
+        if (flatNumbers.Contains(Flat.Value))
         {
-          validFlat.Visible = false;
-        }
-        else
-        {
-          validFlat.Visible = true;
+          Page.ClientScript.RegisterStartupScript(GetType(), "UserDialogScript", "alert(\"Квартира с таким номером уже есть в базе, изменение не было сохранено\");", true);
           return;
         }
 

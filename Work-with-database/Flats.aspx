@@ -9,19 +9,19 @@
       <div class="row mb-3">
         <div class="col">
           <div class="form-floating">
-            <input type="text" runat="server" class="form-control" placeholder="Кадастровый номер дома" aria-label="Кадастровый номер дома" id="Kadastr">
+            <input type="number" min="1" runat="server" class="form-control" placeholder="Кадастровый номер дома" aria-label="Кадастровый номер дома" id="Kadastr">
             <label for="Kadastr">Кадастровый номер дома</label>
           </div>
         </div>
         <div class="col">
           <div class="form-floating">
-            <input type="text" runat="server" class="form-control" placeholder="Этаж" aria-label="Этаж" id="Storey">
+            <input type="number" min="1" max="100" runat="server" class="form-control" placeholder="Этаж" aria-label="Этаж" id="Storey">
             <label for="Storey">Этаж</label>
           </div>
         </div>
         <div class="col">
           <div class="form-floating">
-            <input type="text" runat="server" class="form-control" placeholder="Номер квартиры" aria-label="Номер квартиры" id="Flat">
+            <input type="number" min="0" runat="server" class="form-control" placeholder="Номер квартиры" aria-label="Номер квартиры" id="Flat">
             <label for="Flat">Номер квартиры</label>
           </div>
           <label runat="server" id="validFlat" style="color:red" visible="false">
@@ -37,7 +37,7 @@
       <div class="row mb-3">
         <div class="col">
           <div class="form-floating">
-            <input type="text" runat="server" class="form-control" placeholder="Количество комнат" aria-label="Количество комнат" id="Rooms">
+            <input type="number" min="1" runat="server" class="form-control" placeholder="Количество комнат" aria-label="Количество комнат" id="Rooms">
             <label for="Rooms">Количество комнат</label>
           </div>
         </div>
